@@ -11,27 +11,24 @@ describe("PessoaFormViewModel", function(){
         p.sobrenome('Derp');
         p.adicionar();
         expect(p.repository().length).toBe(1);
-        PessoaListViewModel.list.pop();
-        PessoaRepository.pop();
+        PessoasListViewModel.pop();
     });
     it("adicionar deve inserir no repositorio de list view", function(){
         var p = new PessoaFormViewModel();
         p.nome('Herp');
         p.sobrenome('Derp');
         p.adicionar();
-        expect(PessoaListViewModel.list().length).toBe(1);
-        PessoaListViewModel.list.pop();
-        PessoaRepository.pop();
+        expect(PessoasListViewModel.list().length).toBe(1);
+        PessoasListViewModel.pop();
     });
 });
 
 describe("PessoaListView", function(){
-    it("remover deve remover da lista de exibicao e do repositorio",function(){
+    it("adicionar deve inserir na lista interna e no repositorio de pessoas", function(){
         var pessoa = new Pessoa('Herp', 'Derp');
         var pessoaView = new PessoaItemListViewModel(pessoa);
-        PessoaRepository.push(pessoa);
-        PessoaListViewModel.list.push(pessoaView);
-        pessoaView.remover(pessoaView);
+        PessoasListViewModel.push(pessoaView);
+        PessoasListViewModel.remove(pessoaView);
         expect(PessoaRepository().length).toBe(0);
     });
 });
