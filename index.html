@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Teste</title>
+  <title>Experimento com Knockout.js</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
 </head>
     <body>
         <form>
@@ -11,7 +12,7 @@
                     <p>Nome: <input data-bind="value: nome, valueUpdate: 'afterkeydown'" /></p>
                     <p>Sobrenome: <input data-bind="value: sobrenome, valueUpdate: 'afterkeydown'" /></p>
                     <p data-bind="html: nome_completo"></p>
-                    <button data-bind="click: adicionar">Adicionar</button>
+                    <button data-bind="click: adicionar" class="btn primary">Adicionar</button>
                 </div>
                 <div id="pessoa_list">
                     <span>Número de pessoas cadastradas:<strong data-bind="html: list().length"></strong></span>
@@ -27,11 +28,11 @@
         <script type="text/html" id="listaPessoas">
             <li>
                 <span data-bind="html: $data.nome_completo, click: $data.editar, visible: $data.view_mode"></span>
-                <button data-bind="click: $data.remover, visible: $data.view_mode">Remover</button>
+                <button data-bind="click: $data.remover.bind($data), visible: $data.view_mode" class="btn danger">Remover</button>
                 <span data-bind="visible: $data.edit_mode">
                     <input data-bind="value: $data.pessoa.nome" type="text"/>
                     <input data-bind="value: $data.pessoa.sobrenome" type="text"/>
-                    <button data-bind="click: $data.editar">Salvar</button>
+                    <button data-bind="click: $data.editar" class="btn">Salvar</button>
                 </span>
             </li>
         </script>
