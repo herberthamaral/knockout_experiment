@@ -35,6 +35,11 @@
             </li>
         </script>
         <script type='text/javascript' src="lib/experiment.js"> </script>
+        <script type="text/javascript">
+            var pessoaForm = new PessoaFormViewModel();
+            ko.applyBindings(pessoaForm, document.getElementById('pessoa_form'));
+            ko.applyBindings(PessoaListViewModel, document.getElementById('pessoa_list'));
+        </script>
     </body>
 </html>
 
