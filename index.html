@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Teste</title>
+</head>
+    <body>
+        <form>
+            <div>
+                <div id="pessoa_form">
+                    <p>Nome: <input data-bind="value: nome, valueUpdate: 'afterkeydown'" /></p>
+                    <p>Sobrenome: <input data-bind="value: sobrenome, valueUpdate: 'afterkeydown'" /></p>
+                    <p data-bind="html: nome_completo"></p>
+                    <button data-bind="click: adicionar">Adicionar</button>
+                </div>
+                <div id="pessoa_list">
+                    <ul data-bind="template: {name: 'listaPessoas', foreach: list}">
+                    </ul>
+                </div>
+            </div>
+        </form>
+        <script src="lib/jquery-1.7.1.min.js"></script> 
+        <script src="lib/jquery.tmpl.js"></script>
+        <script src="lib/knockout-2.0.0.js" ></script>
+
+        <script type="text/html" id="listaPessoas">
+            <li>
+                <span data-bind="html: $data.nome_completo, click: $data.editar, visible: $data.view_mode"></span>
+                <button data-bind="click: $data.remover, visible: $data.view_mode">Remover</button>
+                <span data-bind="visible: $data.edit_mode">
+                    <input data-bind="value: $data.pessoa.nome" type="text"/>
+                    <input data-bind="value: $data.pessoa.sobrenome" type="text"/>
+                    <button data-bind="click: $data.editar">Salvar</button>
+                </span>
+            </li>
+        </script>
+        <script type='text/javascript' src="lib/experiment.js"> </script>
+    </body>
+</html>
+
