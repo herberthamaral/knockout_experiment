@@ -14,6 +14,7 @@
                     <button data-bind="click: adicionar">Adicionar</button>
                 </div>
                 <div id="pessoa_list">
+                    <span>Número de pessoas cadastradas:<strong data-bind="html: list().length"></strong></span>
                     <ul data-bind="template: {name: 'listaPessoas', foreach: list}">
                     </ul>
                 </div>
